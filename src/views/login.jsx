@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Cookies from "js-cookie"; // Import js-cookie for handling cookies
+import { BASE_URL } from "../utils/apiService"; 
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
       if (token) {
         try {
           const response = await fetch(
-            "http://localhost:8080/api/auth/refresh",
+            `${BASE_URL}/auth/refresh`,
             {
               method: "GET",
               headers: {
@@ -51,7 +52,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/auth/login", {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

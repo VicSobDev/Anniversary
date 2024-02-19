@@ -12,7 +12,7 @@ const Home = () => {
     if (token) {
       const checkTokenValidity = async () => {
         try {
-          const response = await fetch("http://localhost:8080/api/auth/refresh", {
+          const response = await fetch( `${BASE_URL}/api/auth/refresh`, {
             method: "GET", // Changed to GET
             headers: {
               "Authorization": `Bearer ${token}`,
